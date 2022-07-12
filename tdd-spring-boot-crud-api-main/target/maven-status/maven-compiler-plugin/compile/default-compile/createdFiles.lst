@@ -1,0 +1,10 @@
+user_management\UserController.class
+user_management\User.class
+user_management\UserNotFoundException.class
+user_management\UserRepository.class
+user_management\BirthDate.class
+user_management\UserService.class
+user_management\UserBirthDateValidator.class
+user_management\UserInitializer.class
+user_management\Application.class
+user_management\UserRequest.class
