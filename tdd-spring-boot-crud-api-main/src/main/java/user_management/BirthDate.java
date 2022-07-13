@@ -16,7 +16,7 @@ import javax.validation.Payload;
 @Retention(RUNTIME)
 @Documented
 public @interface BirthDate {
-  String message() default "{user_management.BirthDate.message}";
+  String message() default "Birthdate must be in the past";
   Class <?> [] groups() default {};
   Class <? extends Payload> [] payload() default {};
 }

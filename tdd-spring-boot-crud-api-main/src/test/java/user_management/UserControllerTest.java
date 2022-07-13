@@ -60,8 +60,8 @@ public class UserControllerTest {
   public void allUsersEndpointShouldReturnTwoUsers() throws Exception {
 
     when(userService.getAllUsers()).thenReturn(List.of(
-      createUser(1L, "Java 11", "Duke", "1337"),
-      createUser(2L, "Java EE 8", "Duke", "1338")));
+      createUser(1L, "Java 11", "Duke", "1996-12-12"),
+      createUser(2L, "Java EE 8", "Duke", "1996-12-12")));
 
     this.mockMvc
       .perform(get("/api/users"))
@@ -70,7 +70,7 @@ public class UserControllerTest {
       .andExpect(jsonPath("$", hasSize(2)))
       .andExpect(jsonPath("$[0].first_name", is("Java 11")))
       .andExpect(jsonPath("$[0].last_name", is("Duke")))
-      .andExpect(jsonPath("$[0].date_of_birth", is("1337")))
+      .andExpect(jsonPath("$[0].date_of_birth", is("1996-12-12")))
       .andExpect(jsonPath("$[0].id", is(1)));
 
   }
@@ -78,7 +78,7 @@ public class UserControllerTest {
   @Test
   public void getUserWithIdOneShouldReturnAUser() throws Exception {
 
-    when(userService.getUserById(1L)).thenReturn(createUser(1L, "Java 11", "Duke", "1337"));
+    when(userService.getUserById(1L)).thenReturn(createUser(1L, "Java 11", "Duke", "1994-11-12"));
 
     this.mockMvc
       .perform(get("/api/users/1"))
@@ -86,7 +86,7 @@ public class UserControllerTest {
       .andExpect(content().contentType("application/json"))
       .andExpect(jsonPath("$.first_name", is("Java 11")))
       .andExpect(jsonPath("$.last_name", is("Duke")))
-      .andExpect(jsonPath("$.date_of_birth", is("1337")))
+      .andExpect(jsonPath("$.date_of_birth", is("1994-11-12")))
       .andExpect(jsonPath("$.id", is(1)));
 
   }
@@ -143,8 +143,8 @@ public class UserControllerTest {
           """
             {
              "first_name": "Duke",
-             "last_name": "1337",
-             "date_of_birth": "Java 12"
+             "last_name": "john",
+             "date_of_birth": "2003-05-23"
             }
             """))
       .andExpect(status().isNotFound());
